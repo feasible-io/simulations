@@ -9,7 +9,7 @@ This can be changed to GPU, but be aware of memory usage.
 
 ## Miscellaneous
 Also included is a Python script `CreateAnimation.py` to render an animation (optionally an mp4 movie) from the simulation dump file. 
-FOr how to use it, run the following: 
+For how to use it, run the following: 
 ```bash
 $ python -u ./CreateAnimation.py --help
 ```

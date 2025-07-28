@@ -15,6 +15,7 @@ import h5py as h5
 from logzero import logger
 
 # command-line parsing
+import sys
 import argparse
 from argparse import Namespace
 
@@ -31,6 +32,9 @@ parser.add_argument( '--focus-regime', action='store_true', default=False, help=
 parser.add_argument( '--legend-loc', type=str, default='best', help='Legend location in plot. ' )
 
 args = parser.parse_args()
+if len( sys.argv )==1: # print help message if no command line arguments
+    parser.print_help( sys.stderr )
+    sys.exit( 0 )
 
 logger.info( f'Loading simulation file {args.dump}...' )
 with h5.File( args.dump, 'r' ) as fid: 
