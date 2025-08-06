@@ -67,7 +67,7 @@ def PlotGraduatedData(
     ax_ins.set_yticks([])
     ax_ins.set_xticks([0, len(scaled_index) - 1])
     ax_ins.set_xticklabels([llabel, rlabel])
-    ax_ins.set_title(title)
+    ax_ins.set_title(title, fontsize=12, fontweight='bold')
     return default_ax
 
 

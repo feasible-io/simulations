@@ -25,14 +25,14 @@ def SampleAlongLine( origin, direction, step_size, num_steps ):
 def IsInMapRegion( point, map_lims ):
     return all( [ pt >= ml[0] and pt <= ml[1] for pt, ml in zip( point, map_lims ) ] )
 
-def CalculateTimeOfFlight( point_query, point_origin, speed_map, steps_per_pixel=8, grid_x=None, grid_y=None, grid_z=None ):
+def CalculateTimeOfFlight( point_query, point_origin, speed_map, steps_per_pixel=8 ):
     assert point_query.size == point_origin.size == np.ndim( speed_map ), 'Point dimension mismatch. '
     
     # assuming input points are already in pixel units
     displacement = point_query - point_origin
     distance = np.linalg.norm( displacement )
     direction = displacement / distance 
-    steps = np.linspace( 0., distance, np.round( distance*steps_per_pixel ).astype( int ) ) # roughly 8 steps per pixel
+    steps = np.linspace( 0., distance, np.round( distance*steps_per_pixel ).astype( int ) )
     dx = ( steps[1:] - steps[:-1] ).mean()
     samples = steps[np.newaxis,:] * direction[:,np.newaxis] 
     samples += point_origin[:,np.newaxis].repeat( samples.shape[1], axis=1 )
